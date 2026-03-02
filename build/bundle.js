@@ -48077,7 +48077,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.accountStore = {};
 
-const accountData = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(JSON.parse('{"Login":"sokolyansky","SocialClub":"Jonatan_Keri","Redbucks":0,"Vip":0,"VipDate":"2021-08-15T23:17:56","Unique":"packages_9_0","LastSelectCharUUID":0,"Subscribe":false,"charsSlot":[-1,-1,-2,-2,-2,-2,-2,-2,-2],"chars":{}}'));
+const accountData = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(JSON.parse('{"Login":"sokolyansky","SocialClub":"Jonatan_Keri","Redbucks":0,"Vip":0,"VipDate":"2021-08-15T23:17:56","Unique":"packages_9_0","LastSelectCharUUID":0,"Subscribe":false,"charsSlot":[-1,-2,-2,-2,-2,-2,-2,-2,-2],"chars":{}}'));
 //export const accountData = writable({});
 window.accountStore.accountData = (value) => {
     value = JSON.parse (value);
@@ -48498,9 +48498,10 @@ const defaultData = {
     true: {},
 };
 
-const maxSlots = 3;//Максимальное колличество чаров
+const maxSlots = 1;//Only first character slot is enabled
+const primarySlotIndex = 0;
 
-let selectIndex = 0;//Выбранный чар
+let selectIndex = primarySlotIndex;//Выбранный чар
 const customizations = new Array (maxSlots).fill (defaultData);//Локальные данные
 
 let init = false;
@@ -48531,11 +48532,11 @@ store_account__WEBPACK_IMPORTED_MODULE_2__["accountData"].subscribe(value => {
 });
 
 const updateIndex = index => {
-    //if (selectIndex === index)
-    //    return;
-    selectIndex = index;
-    Object(api_rage__WEBPACK_IMPORTED_MODULE_1__["executeClient"])("client.characters.customization.updateIndex", index);
-    const char = chars [index];
+    // One-character mode: force customization to slot 0.
+    const safeIndex = primarySlotIndex;
+    selectIndex = safeIndex;
+    Object(api_rage__WEBPACK_IMPORTED_MODULE_1__["executeClient"])("client.characters.customization.updateIndex", safeIndex);
+    const char = chars [safeIndex];
     if (char === -1) {
         updateCustomizationData();
         updateName();
@@ -49007,7 +49008,7 @@ const CreateNewCustomization = (gender, newgeneration = false) => {
 /*!*****************************!*\
   !*** ./src/store/server.js ***!
   \*****************************/
-/*! exports provided: serverId, serverDonatMultiplier, serverDonateDoubleConvert, serverDateTime, isEvent */
+/*! exports provided: serverId, serverDonatMultiplier, serverDonateDoubleConvert, serverPlayerId, serverOnline, serverDateTime, isEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49015,6 +49016,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverId", function() { return serverId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverDonatMultiplier", function() { return serverDonatMultiplier; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverDonateDoubleConvert", function() { return serverDonateDoubleConvert; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverPlayerId", function() { return serverPlayerId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverOnline", function() { return serverOnline; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serverDateTime", function() { return serverDateTime; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEvent", function() { return isEvent; });
 /* harmony import */ var svelte_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/store */ "./node_modules/svelte/store/index.mjs");
@@ -49035,6 +49038,12 @@ window.serverStore.serverDonatMultiplier = (value) => serverDonatMultiplier.set 
 const serverDonateDoubleConvert = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(1.5);
 window.serverStore.serverDonateDoubleConvert = (value) => serverDonateDoubleConvert.set (value);
 
+const serverPlayerId = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(0);
+window.serverStore.serverPlayerId = (value) => serverPlayerId.set(value);
+
+const serverOnline = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(0);
+window.serverStore.serverOnline = (value) => serverOnline.set(value);
+
 const serverDateTime = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(new Date().getTime());
 
 let localDateTime = "2021-08-17T00:44:10.8644836+03:00";
@@ -49053,6 +49062,7 @@ window.serverStore.getDateTime = () => {
 
 const isEvent = Object(svelte_store__WEBPACK_IMPORTED_MODULE_0__["writable"])(false);
 window.serverStore.isEvent = (value) => isEvent.set (value);
+
 
 /***/ }),
 
@@ -80428,12 +80438,12 @@ function create_each_block(ctx) {
 	};
 }
 
-// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
+// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
 function create_catch_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
 
-// (763:52)                   <div class="war__maps_image" on:mousedown={handleGlobalMouseDown}
+// (763:52)                  <div class="war__maps_image" on:mousedown={handleGlobalMouseDown}
 function create_then_block(ctx) {
 	let div;
 	let mounted;
@@ -80462,7 +80472,7 @@ function create_then_block(ctx) {
 	};
 }
 
-// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
+// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
 function create_pending_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
@@ -81268,7 +81278,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "airport1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81335,7 +81345,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #fff;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #fff;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "airport2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81402,7 +81412,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "arena");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81469,7 +81479,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "autorynok");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81536,7 +81546,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "_bikerent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "data-name", "bikerent");
@@ -81604,7 +81614,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "boatrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81671,7 +81681,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "buspark");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81738,7 +81748,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "casino");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81805,7 +81815,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "dalnoboi");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81872,7 +81882,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "darkshop");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81939,7 +81949,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "drugs");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82006,7 +82016,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "drugs2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82073,7 +82083,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "electric");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82140,7 +82150,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82207,7 +82217,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82274,7 +82284,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82341,7 +82351,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82408,7 +82418,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82475,7 +82485,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.04;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.04;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82542,7 +82552,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm7");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82609,7 +82619,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm8");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82676,7 +82686,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82743,7 +82753,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82810,7 +82820,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82877,7 +82887,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82944,7 +82954,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83011,7 +83021,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "gosshahta");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83078,7 +83088,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "himlab");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83145,7 +83155,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "huntingshop");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83212,7 +83222,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "inkas");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83279,7 +83289,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "jobgason");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83346,7 +83356,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "landbar");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83413,7 +83423,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "mech");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83480,7 +83490,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "observatorya");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83547,7 +83557,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "offroadrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83614,7 +83624,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83681,7 +83691,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83748,7 +83758,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83815,7 +83825,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83882,7 +83892,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "port");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83949,7 +83959,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "rielt");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84016,7 +84026,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "rynok");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84083,7 +84093,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84150,7 +84160,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84217,7 +84227,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84284,7 +84294,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84351,7 +84361,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84418,7 +84428,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84485,7 +84495,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84552,7 +84562,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84619,7 +84629,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84686,7 +84696,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84753,7 +84763,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad7");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84820,7 +84830,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "speedcarrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84887,7 +84897,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "taxi");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84954,7 +84964,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "theatre");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85021,7 +85031,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "theatre2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85088,7 +85098,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85155,7 +85165,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85222,7 +85232,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85289,7 +85299,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vokzal");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85356,7 +85366,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "zavod");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85423,7 +85433,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "zavod2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -112273,7 +112283,7 @@ function create_fragment(ctx) {
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			strong0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong0.textContent = "Gambling";
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" is a game with the aim of winning money or other material valuables, in which the winnings are fully or significantly dependent on chance rather than the skill of the players.\r\n\r\n    ");
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" is a game with the aim of winning money or other material valuables, in which the winnings are fully or significantly dependent on chance rather than the skill of the players.\n\n    ");
 			strong1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong1.textContent = "Currently, the server features 6 gambling games:";
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" Dice, roulette, lottery, blackjack, horse racing, and slot machines.");
@@ -113111,7 +113121,7 @@ function create_fragment(ctx) {
 			br4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("br");
 			strong7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong7.textContent = "/closestock";
-			t23 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" - close the warehouse.\r\n    \r\n    ");
+			t23 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" - close the warehouse.\n    \n    ");
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			img0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
 			img1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
@@ -113432,7 +113442,7 @@ function create_fragment(ctx) {
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(", ");
 			strong3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong3.textContent = "arms and narcotics trade";
-			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".\r\n\r\n    ");
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".\n\n    ");
 			p0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
 			p0.innerHTML = `<span style="font-weight: 400;">In total, you can find 5 gangs in the state: <strong>Blood Street Gang</strong>, <strong>The Families</strong>, <strong>The Ballas Gang</strong>, <strong>Los Santos Vagos</strong>, <strong>Marabunta Grande</strong>. Just like the mafia, some of them can form alliances, while others engage in fierce wars.</span>`;
 			t20 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -120946,7 +120956,7 @@ function create_if_block_8(ctx) {
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
 			img2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
-			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                                             Sender: ");
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                                             Sender: ");
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t6_value);
 			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
@@ -126361,7 +126371,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (129:4) {#if redZone}
+// (122:4) {#if redZone}
 function create_if_block_2(ctx) {
 	let div;
 
@@ -126380,7 +126390,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (142:4) {#if $charFractionID > 0 || $charOrganizationID > 0}
+// (135:4) {#if $charFractionID > 0 || $charOrganizationID > 0}
 function create_if_block_1(ctx) {
 	let div1;
 	let div0;
@@ -126439,7 +126449,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (189:0) {#if isWorld}
+// (182:0) {#if isWorld}
 function create_if_block(ctx) {
 	let div1;
 	let svg;
@@ -126866,10 +126876,6 @@ function instance($$self, $$props, $$invalidate) {
 	window.hudStore.polygon = value => polygon = value;
 	let radio = 0;
 	window.hudStore.radio = value => $$invalidate(6, radio = value);
-	let serverPlayerId = 0;
-	window.serverStore.serverPlayerId = value => serverPlayerId = value;
-	let serverOnline = 0;
-	window.serverStore.serverOnline = value => serverOnline = value;
 	let improvementTime = -1;
 	window.hudStore.setImprovementTime = value => improvementTime = value;
 
@@ -126945,14 +126951,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[16] = list[i];
-	child_ctx[18] = i;
+	child_ctx[17] = list[i];
+	child_ctx[19] = i;
 	return child_ctx;
 }
 
-// (146:6) {#if $charWanted > 0}
+// (140:6) {#if $charWanted > 0}
 function create_if_block_3(ctx) {
 	let each_1_anchor;
 	let each_value = new Array(5);
@@ -126980,7 +126988,7 @@ function create_if_block_3(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, each_1_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*$charWanted*/ 64) {
+			if (dirty & /*$charWanted*/ 128) {
 				each_value = new Array(5);
 				let i;
 
@@ -127010,7 +127018,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (147:8) {#each new Array(5) as e, i}
+// (141:8) {#each new Array(5) as e, i}
 function create_each_block(ctx) {
 	let svg;
 	let path;
@@ -127023,7 +127031,7 @@ function create_each_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "Star 3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "d", "M12.36 0L8.61 7.84L0 8.98L6.3 14.96L4.72 23.51L12.36 19.37L20 23.51L18.42 14.96L24.72 8.98L16.1 7.84L12.36 0Z");
 
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "fill", path_fill_value = /*i*/ ctx[18] < /*$charWanted*/ ctx[6]
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "fill", path_fill_value = /*i*/ ctx[19] < /*$charWanted*/ ctx[7]
 			? "#FFD700"
 			: "grey");
 
@@ -127033,21 +127041,21 @@ function create_each_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg, "viewBox", "0 0 24.7275 23.5172");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg, "xmlns", "http://www.w3.org/2000/svg");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg, "xmlns:xlink", "http://www.w3.org/1999/xlink");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(svg, "active", /*i*/ ctx[18] < /*$charWanted*/ ctx[6]);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(svg, "active", /*i*/ ctx[19] < /*$charWanted*/ ctx[7]);
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, svg, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(svg, path);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*$charWanted*/ 64 && path_fill_value !== (path_fill_value = /*i*/ ctx[18] < /*$charWanted*/ ctx[6]
+			if (dirty & /*$charWanted*/ 128 && path_fill_value !== (path_fill_value = /*i*/ ctx[19] < /*$charWanted*/ ctx[7]
 			? "#FFD700"
 			: "grey")) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "fill", path_fill_value);
 			}
 
-			if (dirty & /*$charWanted*/ 64) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(svg, "active", /*i*/ ctx[18] < /*$charWanted*/ ctx[6]);
+			if (dirty & /*$charWanted*/ 128) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(svg, "active", /*i*/ ctx[19] < /*$charWanted*/ ctx[7]);
 			}
 		},
 		d(detaching) {
@@ -127056,13 +127064,13 @@ function create_each_block(ctx) {
 	};
 }
 
-// (179:4) {#if ammo > 0}
+// (173:4) {#if ammo > 0}
 function create_if_block(ctx) {
 	let img;
 	let img_src_value;
 	let t;
 	let if_block_anchor;
-	let if_block = /*ammo*/ ctx[5] > 0 && create_if_block_1(ctx);
+	let if_block = /*ammo*/ ctx[3] > 0 && create_if_block_1(ctx);
 
 	return {
 		c() {
@@ -127070,7 +127078,7 @@ function create_if_block(ctx) {
 			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			if (if_block) if_block.c();
 			if_block_anchor = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["empty"])();
-			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img.src, img_src_value = "" + (document.cloud + "inventoryItems/items/" + /*weaponItemId*/ ctx[3] + ".png"))) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "src", img_src_value);
+			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img.src, img_src_value = "" + (document.cloud + "inventoryItems/items/" + /*weaponItemId*/ ctx[1] + ".png"))) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "src", img_src_value);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "alt", "");
 		},
 		m(target, anchor) {
@@ -127080,11 +127088,11 @@ function create_if_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*weaponItemId*/ 8 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img.src, img_src_value = "" + (document.cloud + "inventoryItems/items/" + /*weaponItemId*/ ctx[3] + ".png"))) {
+			if (dirty & /*weaponItemId*/ 2 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img.src, img_src_value = "" + (document.cloud + "inventoryItems/items/" + /*weaponItemId*/ ctx[1] + ".png"))) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "src", img_src_value);
 			}
 
-			if (/*ammo*/ ctx[5] > 0) {
+			if (/*ammo*/ ctx[3] > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -127106,7 +127114,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (181:8) {#if ammo > 0}
+// (175:8) {#if ammo > 0}
 function create_if_block_1(ctx) {
 	let div;
 	let p;
@@ -127118,13 +127126,13 @@ function create_if_block_1(ctx) {
 	let pattern;
 	let use;
 	let image;
-	let if_block = /*clipSize*/ ctx[4] > 0 && /*clipSize*/ ctx[4] < 1000 && create_if_block_2(ctx);
+	let if_block = /*clipSize*/ ctx[2] > 0 && /*clipSize*/ ctx[2] < 1000 && create_if_block_2(ctx);
 
 	return {
 		c() {
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*ammo*/ ctx[5]);
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*ammo*/ ctx[3]);
 			if (if_block) if_block.c();
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
@@ -127168,9 +127176,9 @@ function create_if_block_1(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(defs, image);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*ammo*/ 32) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, /*ammo*/ ctx[5]);
+			if (dirty & /*ammo*/ 8) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, /*ammo*/ ctx[3]);
 
-			if (/*clipSize*/ ctx[4] > 0 && /*clipSize*/ ctx[4] < 1000) {
+			if (/*clipSize*/ ctx[2] > 0 && /*clipSize*/ ctx[2] < 1000) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -127190,7 +127198,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (183:21) {#if clipSize > 0 && clipSize < 1000}
+// (177:21) {#if clipSize > 0 && clipSize < 1000}
 function create_if_block_2(ctx) {
 	let b;
 	let t0;
@@ -127200,7 +127208,7 @@ function create_if_block_2(ctx) {
 		c() {
 			b = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("b");
 			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("/");
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*clipSize*/ ctx[4]);
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*clipSize*/ ctx[2]);
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, b, anchor);
@@ -127208,7 +127216,7 @@ function create_if_block_2(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(b, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*clipSize*/ 16) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, /*clipSize*/ ctx[4]);
+			if (dirty & /*clipSize*/ 4) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, /*clipSize*/ ctx[2]);
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(b);
@@ -127242,19 +127250,21 @@ function create_fragment(ctx) {
 	let t3;
 	let t4;
 	let t5;
-	let div2;
 	let t6;
+	let t7;
+	let div2;
+	let t8;
 	let div5;
-	let t11;
+	let t13;
 	let div6;
-	let t12;
+	let t14;
 	let div9;
 	let div7;
 	let p2;
-	let t13;
-	let t14_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Money) + "";
-	let t14;
 	let t15;
+	let t16_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Money) + "";
+	let t16;
+	let t17;
 	let div8;
 	let svg2;
 	let g1;
@@ -127262,13 +127272,13 @@ function create_fragment(ctx) {
 	let defs1;
 	let clipPath;
 	let rect;
-	let t16;
-	let p3;
-	let t17;
-	let t18_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Bank) + "";
 	let t18;
-	let if_block0 = /*$charWanted*/ ctx[6] > 0 && create_if_block_3(ctx);
-	let if_block1 = /*ammo*/ ctx[5] > 0 && create_if_block(ctx);
+	let p3;
+	let t19;
+	let t20_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Bank) + "";
+	let t20;
+	let if_block0 = /*$charWanted*/ ctx[7] > 0 && create_if_block_3(ctx);
+	let if_block1 = /*ammo*/ ctx[3] > 0 && create_if_block(ctx);
 
 	return {
 		c() {
@@ -127290,31 +127300,33 @@ function create_fragment(ctx) {
 			feColorMatrix1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("feColorMatrix");
 			feBlend0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("feBlend");
 			feBlend1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("feBlend");
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*serverOnline*/ ctx[2]);
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*$serverOnline*/ ctx[4]);
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			p1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("ID: ");
-			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*serverPlayerId*/ ctx[1]);
-			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Server: ");
+			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*$serverId*/ ctx[5]);
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" | ID: ");
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*$serverPlayerId*/ ctx[6]);
+			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			if (if_block0) if_block0.c();
-			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			div5.innerHTML = `<div class="block"><b>X2</b> 
         <div class="bg">Supreme Coins</div></div> 
     <svg width="34" height="48" viewBox="0 0 34 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.25 36.0098L46.5 46.5L36.0667 20.166" fill="#B4052F"></path><path d="M44.382 41.1533L23.4615 32.793L36.0667 20.166L44.382 41.1533Z" fill="#FF003D"></path><path d="M26.943 16.2046L22.4415 5.70605L21.063 6.29705L25.5645 16.7956L26.943 16.2046ZM16.7962 25.5443L6.29774 21.0428L5.70675 22.4206L16.2052 26.9221L16.7962 25.5443Z" fill="white" fill-opacity="0.2"></path><path d="M15 6C14.1716 6 13.5 5.32843 13.5 4.5C13.5 3.67157 14.1716 3 15 3C15.8284 3 16.5 3.67157 16.5 4.5C16.5 5.32843 15.8284 6 15 6Z" fill="white" fill-opacity="0.2"></path><path d="M4.5 15.75C3.67157 15.75 3 15.0784 3 14.25C3 13.4216 3.67157 12.75 4.5 12.75C5.32843 12.75 6 13.4216 6 14.25C6 15.0784 5.32843 15.75 4.5 15.75Z" fill="white" fill-opacity="0.2"></path><path d="M3 4.5C2.17157 4.5 1.5 3.82843 1.5 3C1.5 2.17157 2.17157 1.5 3 1.5C3.82843 1.5 4.5 2.17157 4.5 3C4.5 3.82843 3.82843 4.5 3 4.5Z" fill="white" fill-opacity="0.2"></path><path d="M13.5 32.25C12.6716 32.25 12 31.5784 12 30.75C12 29.9216 12.6716 29.25 13.5 29.25C14.3284 29.25 15 29.9216 15 30.75C15 31.5784 14.3284 32.25 13.5 32.25Z" fill="white" fill-opacity="0.2"></path><path d="M31.5 15C30.6716 15 30 14.3284 30 13.5C30 12.6716 30.6716 12 31.5 12C32.3284 12 33 12.6716 33 13.5C33 14.3284 32.3284 15 31.5 15Z" fill="white" fill-opacity="0.2"></path><path d="M36.75 21.891V42.6038L33.75 41.4045V22.4865L36.0667 20.166L36.75 21.891ZM42.75 45.0015L39.75 43.8023V29.463L42.75 37.035V45.0015ZM27.75 39.0068V30L30.75 27.42V40.206L27.75 39.0068Z" fill="#E2E7F6"></path><path d="M14.6625 20.3647L10.1625 17.3632L9.32996 18.6112L13.83 21.6127L14.6625 20.3647ZM21.6165 13.839L18.615 9.33899L17.367 10.1715L20.3685 14.6715L21.6165 13.839Z" fill="white" fill-opacity="0.2"></path><path d="M39 18H40.5V17.8837C40.4998 17.3231 40.3336 16.775 40.0222 16.3088L39.225 15.111C39.0527 14.8531 38.9752 14.5434 39.0057 14.2347C39.0362 13.926 39.1728 13.6375 39.3922 13.4183L39.6675 13.1423C39.9321 12.8791 40.1419 12.5661 40.2848 12.2213C40.4277 11.8766 40.5008 11.5069 40.5 11.1338V10.5H39V11.1338C39.0004 11.3099 38.9659 11.4844 38.8984 11.6471C38.8309 11.8098 38.7319 11.9575 38.607 12.0817L38.3317 12.3577C37.8674 12.8224 37.5783 13.4336 37.5138 14.0873C37.4493 14.7411 37.6132 15.397 37.9777 15.9435L38.775 17.139C38.9222 17.3594 39.0006 17.6187 39 17.8837V18ZM10.5 41.25H11.25C11.6233 41.2509 11.9932 41.1779 12.3382 41.0352C12.6832 40.8924 12.9965 40.6827 13.26 40.4182L13.5345 40.143C13.757 39.9302 14.0444 39.7981 14.3508 39.7676C14.6572 39.7372 14.9649 39.8102 15.225 39.975L16.425 40.773C16.8913 41.0841 17.4394 41.2501 18 41.25V39.75C17.7352 39.7501 17.4763 39.6718 17.256 39.525L16.056 38.727C15.5049 38.3761 14.8518 38.2204 14.2017 38.2848C13.5515 38.3493 12.9417 38.6302 12.4702 39.0825L12.1957 39.357C12.0718 39.4816 11.9244 39.5804 11.7621 39.6479C11.5998 39.7153 11.4257 39.75 11.25 39.75H10.5V41.25Z" fill="white" fill-opacity="0.2"></path><path d="M21.5348 20.4713L9.53704 8.47351L8.47654 9.53401L20.4743 21.5318L21.5348 20.4713Z" fill="white" fill-opacity="0.2"></path><path d="M31.5 1.5L30.3412 3.72225L27.75 4.0785L29.625 5.808L29.1825 8.25L31.5 7.09725L33.8175 8.25L33.375 5.808L35.25 4.0785L32.6588 3.72225L31.5 1.5ZM5.25 26.25L4.09125 28.4723L1.5 28.8285L3.375 30.558L2.9325 33L5.25 31.8473L7.5675 33L7.125 30.558L9 28.8285L6.40875 28.4723L5.25 26.25Z" fill="white" fill-opacity="0.2"></path><path d="M27.75 34.5068V30L30.75 27.42V35.706L27.75 34.5068ZM36.75 38.1038L33.75 36.9045V22.4865L36.0667 20.166L36.75 21.891V38.1038ZM39.75 39.3023V29.463L42.75 37.035V40.5015L39.75 39.3023Z" fill="#F2F2F2"></path><path d="M18.8045 35.2835C16.753 33.2199 18.7976 27.8613 23.3711 23.3147C27.9447 18.7682 33.3153 16.7555 35.3668 18.8192C37.4183 20.8829 35.3737 26.2415 30.8001 30.788C26.2266 35.3345 20.8559 37.3472 18.8045 35.2835Z" fill="#F4BA1F"></path><path d="M35.1968 18.675C34.8848 21.2115 32.9693 24.6202 29.904 27.675C25.44 32.121 20.2148 34.1445 18.054 32.3212C18.366 29.7847 20.2815 26.3752 23.3468 23.3212C27.81 18.8782 33.0353 16.8547 35.1968 18.675Z" fill="#FFCA3D"></path></svg>`;
 
-			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t13 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			if (if_block1) if_block1.c();
-			t12 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t14 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			p2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t13 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
-			t14 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t14_value);
-			t15 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t15 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
+			t16 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t16_value);
+			t17 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			svg2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			g1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("g");
@@ -127322,10 +127334,10 @@ function create_fragment(ctx) {
 			defs1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			clipPath = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("clipPath");
 			rect = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("rect");
-			t16 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t18 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			p3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t17 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
-			t18 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t18_value);
+			t19 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
+			t20 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t20_value);
 			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img.src, img_src_value = "https://imgur.com/NFvlU0V.png")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "src", img_src_value);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img, "alt", "");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(circle, "cx", "8.5");
@@ -127408,21 +127420,23 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t3);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t4);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t5, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t6);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t7, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div2, anchor);
 			if (if_block0) if_block0.m(div2, null);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t6, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t8, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div5, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t11, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t13, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div6, anchor);
 			if (if_block1) if_block1.m(div6, null);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t12, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t14, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div9, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div9, div7);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div7, p2);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p2, t13);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p2, t14);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div9, t15);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p2, t15);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p2, t16);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div9, t17);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div9, div8);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div8, svg2);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(svg2, g1);
@@ -127430,16 +127444,17 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(svg2, defs1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(defs1, clipPath);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(clipPath, rect);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div8, t16);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div8, t18);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div8, p3);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p3, t17);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p3, t18);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p3, t19);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p3, t20);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*serverOnline*/ 4) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, /*serverOnline*/ ctx[2]);
-			if (dirty & /*serverPlayerId*/ 2) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, /*serverPlayerId*/ ctx[1]);
+			if (dirty & /*$serverOnline*/ 16) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, /*$serverOnline*/ ctx[4]);
+			if (dirty & /*$serverId*/ 32) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, /*$serverId*/ ctx[5]);
+			if (dirty & /*$serverPlayerId*/ 64) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t6, /*$serverPlayerId*/ ctx[6]);
 
-			if (/*$charWanted*/ ctx[6] > 0) {
+			if (/*$charWanted*/ ctx[7] > 0) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 				} else {
@@ -127452,7 +127467,7 @@ function create_fragment(ctx) {
 				if_block0 = null;
 			}
 
-			if (/*ammo*/ ctx[5] > 0) {
+			if (/*ammo*/ ctx[3] > 0) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -127465,22 +127480,22 @@ function create_fragment(ctx) {
 				if_block1 = null;
 			}
 
-			if (dirty & /*userData*/ 1 && t14_value !== (t14_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Money) + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t14, t14_value);
-			if (dirty & /*userData*/ 1 && t18_value !== (t18_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Bank) + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t18, t18_value);
+			if (dirty & /*userData*/ 1 && t16_value !== (t16_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Money) + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t16, t16_value);
+			if (dirty & /*userData*/ 1 && t20_value !== (t20_value = Object(api_formatter__WEBPACK_IMPORTED_MODULE_6__["format"])("money", /*userData*/ ctx[0].Bank) + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t20, t20_value);
 		},
 		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
 		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div1);
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t5);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t7);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div2);
 			if (if_block0) if_block0.d();
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t6);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t8);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div5);
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t11);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t13);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div6);
 			if (if_block1) if_block1.d();
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t12);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t14);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div9);
 		}
 	};
@@ -127488,9 +127503,15 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let $text;
+	let $serverOnline;
+	let $serverId;
+	let $serverPlayerId;
 	let $charWanted;
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, _player_reports_index__WEBPACK_IMPORTED_MODULE_10__["text"], $$value => $$invalidate(11, $text = $$value));
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_chars__WEBPACK_IMPORTED_MODULE_3__["charWanted"], $$value => $$invalidate(6, $charWanted = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, _player_reports_index__WEBPACK_IMPORTED_MODULE_10__["text"], $$value => $$invalidate(12, $text = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_server__WEBPACK_IMPORTED_MODULE_2__["serverOnline"], $$value => $$invalidate(4, $serverOnline = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_server__WEBPACK_IMPORTED_MODULE_2__["serverId"], $$value => $$invalidate(5, $serverId = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_server__WEBPACK_IMPORTED_MODULE_2__["serverPlayerId"], $$value => $$invalidate(6, $serverPlayerId = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_chars__WEBPACK_IMPORTED_MODULE_3__["charWanted"], $$value => $$invalidate(7, $charWanted = $$value));
 	let reports = [], answer = $text;
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_7__["onDestroy"])(() => {
@@ -127573,16 +127594,12 @@ function instance($$self, $$props, $$invalidate) {
 		isRotate = !isRotate;
 	};
 
-	let serverPlayerId = 0;
-	window.serverStore.serverPlayerId = value => $$invalidate(1, serverPlayerId = value);
-	let serverOnline = 0;
-	window.serverStore.serverOnline = value => $$invalidate(2, serverOnline = value);
 	let weaponItemId = 0;
-	window.hudStore.weaponItemId = value => $$invalidate(3, weaponItemId = value);
+	window.hudStore.weaponItemId = value => $$invalidate(1, weaponItemId = value);
 	let clipSize = 0;
-	window.hudStore.clipSize = value => $$invalidate(4, clipSize = value);
+	window.hudStore.clipSize = value => $$invalidate(2, clipSize = value);
 	let ammo = 0;
-	window.hudStore.ammo = value => $$invalidate(5, ammo = value);
+	window.hudStore.ammo = value => $$invalidate(3, ammo = value);
 	let isShow = false;
 
 	store_server__WEBPACK_IMPORTED_MODULE_2__["serverDonatMultiplier"].subscribe(value => {
@@ -127602,11 +127619,12 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		userData,
-		serverPlayerId,
-		serverOnline,
 		weaponItemId,
 		clipSize,
 		ammo,
+		$serverOnline,
+		$serverId,
+		$serverPlayerId,
 		$charWanted
 	];
 }
@@ -128649,7 +128667,7 @@ function create_if_block(ctx) {
 			: '');
 
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div3, "class", "hud-speed-text");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path6, "d", "M473.803,82.95l-26.876-52.676c-5.625-11.022-19.118-15.401-30.143-9.776c-11.023,5.624-15.399,19.12-9.776,30.143\r\n                          l18.309,35.886c-29.304,9.73-50.507,37.381-50.507,69.91v54.951c0,9.281,7.524,16.806,16.806,16.806h39.82v56.296\r\n                          c0,24.99-20.33,45.32-45.319,45.32h-27.279V41.29C358.837,18.523,340.316,0,317.549,0H119.39\r\n                          C90.703,0,67.364,23.338,67.364,52.025v378.068c-18.113,4.368-31.613,20.699-31.613,40.134v24.967\r\n                          c0,9.281,7.524,16.805,16.805,16.805h321.091c9.281,0,16.806-7.524,16.806-16.805v-24.967c0-19.435-13.502-35.766-31.615-40.134\r\n                          v-55.471h27.279c49.699,0,90.134-40.434,90.134-90.135V93.133C476.25,89.592,475.411,86.102,473.803,82.95z M287.787,167.31\r\n                          H138.416c-7.735,0-14.005-6.27-14.005-14.005V71.661c0-7.735,6.27-14.005,14.005-14.005h149.371\r\n                          c7.735,0,14.005,6.27,14.005,14.005v81.645h0C301.792,161.04,295.522,167.31,287.787,167.31z");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path6, "d", "M473.803,82.95l-26.876-52.676c-5.625-11.022-19.118-15.401-30.143-9.776c-11.023,5.624-15.399,19.12-9.776,30.143\n                          l18.309,35.886c-29.304,9.73-50.507,37.381-50.507,69.91v54.951c0,9.281,7.524,16.806,16.806,16.806h39.82v56.296\n                          c0,24.99-20.33,45.32-45.319,45.32h-27.279V41.29C358.837,18.523,340.316,0,317.549,0H119.39\n                          C90.703,0,67.364,23.338,67.364,52.025v378.068c-18.113,4.368-31.613,20.699-31.613,40.134v24.967\n                          c0,9.281,7.524,16.805,16.805,16.805h321.091c9.281,0,16.806-7.524,16.806-16.805v-24.967c0-19.435-13.502-35.766-31.615-40.134\n                          v-55.471h27.279c49.699,0,90.134-40.434,90.134-90.135V93.133C476.25,89.592,475.411,86.102,473.803,82.95z M287.787,167.31\n                          H138.416c-7.735,0-14.005-6.27-14.005-14.005V71.661c0-7.735,6.27-14.005,14.005-14.005h149.371\n                          c7.735,0,14.005,6.27,14.005,14.005v81.645h0C301.792,161.04,295.522,167.31,287.787,167.31z");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "fill", svg3_fill_value = /*getFuelColor*/ ctx[19](/*FuelProcent*/ ctx[4]));
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "version", "1.1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "id", "Layer_1");
@@ -145456,12 +145474,12 @@ function create_if_block(ctx) {
 	};
 }
 
-// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
+// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
 function create_catch_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
 
-// (40:52)                   <div class="newphone__maps_image" style="background-image: url({mapImage}
+// (40:52)                  <div class="newphone__maps_image" style="background-image: url({mapImage}
 function create_then_block(ctx) {
 	let div;
 
@@ -145481,7 +145499,7 @@ function create_then_block(ctx) {
 	};
 }
 
-// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
+// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
 function create_pending_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
@@ -148248,7 +148266,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (226:16) {#each emojiListValues.filter(el => filterCheck({                      name: el.name,                      sText: el.sText,                      shortname: el.shortname                  }, searchText)) as emoji}
+// (226:16) {#each emojiListValues.filter(el => filterCheck({                     name: el.name,                     sText: el.sText,                     shortname: el.shortname                 }, searchText)) as emoji}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 	let if_block = (typeof /*emoji*/ ctx[35].colorId === "undefined" || /*emoji*/ ctx[35].colorId === /*selectedColor*/ ctx[1]) && create_if_block_4(ctx);
@@ -211834,7 +211852,7 @@ function create_fragment(ctx) {
 	inputcustom0 = new components_input_oneInput_svelte__WEBPACK_IMPORTED_MODULE_4__["default"]({
 			props: {
 				cl: "createchar_input",
-				setValue: /*func*/ ctx[7],
+				setValue: /*func*/ ctx[6],
 				value: /*FirstNameLocal*/ ctx[0],
 				placeholder: "Name",
 				type: "text"
@@ -211844,7 +211862,7 @@ function create_fragment(ctx) {
 	inputcustom1 = new components_input_oneInput_svelte__WEBPACK_IMPORTED_MODULE_4__["default"]({
 			props: {
 				cl: "createchar_input",
-				setValue: /*func_1*/ ctx[8],
+				setValue: /*func_1*/ ctx[7],
 				value: /*LastNameLocal*/ ctx[1],
 				placeholder: "Surname",
 				type: "text"
@@ -211854,18 +211872,18 @@ function create_fragment(ctx) {
 	parentsbutton0 = new _parentsbutton_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
 			props: {
 				gender: false,
-				value: /*$customization*/ ctx[5].motherId,
+				value: /*$customization*/ ctx[4].motherId,
 				active: /*activeItem*/ ctx[2] === 1,
-				onChange: /*func_2*/ ctx[11]
+				onChange: /*func_2*/ ctx[10]
 			}
 		});
 
 	parentsbutton1 = new _parentsbutton_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
 			props: {
 				gender: true,
-				value: /*$customization*/ ctx[5].fatherId,
+				value: /*$customization*/ ctx[4].fatherId,
 				active: /*activeItem*/ ctx[2] === 0,
-				onChange: /*func_3*/ ctx[13]
+				onChange: /*func_3*/ ctx[12]
 			}
 		});
 
@@ -211877,8 +211895,8 @@ function create_fragment(ctx) {
 				step: 0.1,
 				min: 0,
 				max: 1,
-				value: /*$customization*/ ctx[5].shapeMix,
-				callback: /*func_4*/ ctx[15]
+				value: /*$customization*/ ctx[4].shapeMix,
+				callback: /*func_4*/ ctx[14]
 			}
 		});
 
@@ -211947,10 +211965,10 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div8, "class", "CharsHa");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div9, "class", "nameR");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img0, "class", "left");
-			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img0.src, img0_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[5].motherId}.png`)) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img0, "src", img0_src_value);
+			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img0.src, img0_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[4].motherId}.png`)) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img0, "src", img0_src_value);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img0, "alt", "");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img1, "class", "right");
-			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img1.src, img1_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[5].fatherId}.png`)) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img1, "src", img1_src_value);
+			if (!Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img1.src, img1_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[4].fatherId}.png`)) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img1, "src", img1_src_value);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img1, "alt", "");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div10, "class", "imgSR");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div11, "class", "left");
@@ -212010,15 +212028,15 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(window, "keyup", /*handleKeyUp*/ ctx[6]),
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(window, "keyup", /*handleKeyUp*/ ctx[5]),
 					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div4, "keypress", keypress_handler),
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div4, "click", /*click_handler*/ ctx[9]),
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div4, "click", /*click_handler*/ ctx[8]),
 					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div5, "keypress", keypress_handler_1),
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div5, "click", /*click_handler_1*/ ctx[10]),
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div5, "click", /*click_handler_1*/ ctx[9]),
 					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div11, "keypress", keypress_handler_2),
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div11, "click", /*click_handler_2*/ ctx[12]),
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div11, "click", /*click_handler_2*/ ctx[11]),
 					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div12, "keypress", keypress_handler_3),
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div12, "click", /*click_handler_3*/ ctx[14])
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div12, "click", /*click_handler_3*/ ctx[13])
 				];
 
 				mounted = true;
@@ -212026,11 +212044,11 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const inputcustom0_changes = {};
-			if (dirty & /*FirstNameLocal*/ 1) inputcustom0_changes.setValue = /*func*/ ctx[7];
+			if (dirty & /*FirstNameLocal*/ 1) inputcustom0_changes.setValue = /*func*/ ctx[6];
 			if (dirty & /*FirstNameLocal*/ 1) inputcustom0_changes.value = /*FirstNameLocal*/ ctx[0];
 			inputcustom0.$set(inputcustom0_changes);
 			const inputcustom1_changes = {};
-			if (dirty & /*LastNameLocal*/ 2) inputcustom1_changes.setValue = /*func_1*/ ctx[8];
+			if (dirty & /*LastNameLocal*/ 2) inputcustom1_changes.setValue = /*func_1*/ ctx[7];
 			if (dirty & /*LastNameLocal*/ 2) inputcustom1_changes.value = /*LastNameLocal*/ ctx[1];
 			inputcustom1.$set(inputcustom1_changes);
 
@@ -212042,18 +212060,18 @@ function create_fragment(ctx) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div5, "active", !/*$gender*/ ctx[3]);
 			}
 
-			if (!current || dirty & /*$customization*/ 32 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img0.src, img0_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[5].motherId}.png`)) {
+			if (!current || dirty & /*$customization*/ 16 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img0.src, img0_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[4].motherId}.png`)) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img0, "src", img0_src_value);
 			}
 
-			if (!current || dirty & /*$customization*/ 32 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img1.src, img1_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[5].fatherId}.png`)) {
+			if (!current || dirty & /*$customization*/ 16 && !Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["src_url_equal"])(img1.src, img1_src_value = document.cloud + `img/parents/${/*$customization*/ ctx[4].fatherId}.png`)) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(img1, "src", img1_src_value);
 			}
 
 			const parentsbutton0_changes = {};
-			if (dirty & /*$customization*/ 32) parentsbutton0_changes.value = /*$customization*/ ctx[5].motherId;
+			if (dirty & /*$customization*/ 16) parentsbutton0_changes.value = /*$customization*/ ctx[4].motherId;
 			if (dirty & /*activeItem*/ 4) parentsbutton0_changes.active = /*activeItem*/ ctx[2] === 1;
-			if (dirty & /*$gender, $customization*/ 40) parentsbutton0_changes.onChange = /*func_2*/ ctx[11];
+			if (dirty & /*$gender, $customization*/ 24) parentsbutton0_changes.onChange = /*func_2*/ ctx[10];
 			parentsbutton0.$set(parentsbutton0_changes);
 
 			if (!current || dirty & /*activeItem*/ 4) {
@@ -212061,9 +212079,9 @@ function create_fragment(ctx) {
 			}
 
 			const parentsbutton1_changes = {};
-			if (dirty & /*$customization*/ 32) parentsbutton1_changes.value = /*$customization*/ ctx[5].fatherId;
+			if (dirty & /*$customization*/ 16) parentsbutton1_changes.value = /*$customization*/ ctx[4].fatherId;
 			if (dirty & /*activeItem*/ 4) parentsbutton1_changes.active = /*activeItem*/ ctx[2] === 0;
-			if (dirty & /*$gender, $customization*/ 40) parentsbutton1_changes.onChange = /*func_3*/ ctx[13];
+			if (dirty & /*$gender, $customization*/ 24) parentsbutton1_changes.onChange = /*func_3*/ ctx[12];
 			parentsbutton1.$set(parentsbutton1_changes);
 
 			if (!current || dirty & /*activeItem*/ 4) {
@@ -212071,8 +212089,8 @@ function create_fragment(ctx) {
 			}
 
 			const inputblock_changes = {};
-			if (dirty & /*$customization*/ 32) inputblock_changes.value = /*$customization*/ ctx[5].shapeMix;
-			if (dirty & /*$gender*/ 8) inputblock_changes.callback = /*func_4*/ ctx[15];
+			if (dirty & /*$customization*/ 16) inputblock_changes.value = /*$customization*/ ctx[4].shapeMix;
+			if (dirty & /*$gender*/ 8) inputblock_changes.callback = /*func_4*/ ctx[14];
 			inputblock.$set(inputblock_changes);
 		},
 		i(local) {
@@ -212131,11 +212149,9 @@ const keypress_handler_3 = () => {
 
 function instance($$self, $$props, $$invalidate) {
 	let $gender;
-	let $selectIndex;
 	let $customization;
 	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_1__["gender"], $$value => $$invalidate(3, $gender = $$value));
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, _store_js__WEBPACK_IMPORTED_MODULE_5__["selectIndex"], $$value => $$invalidate(4, $selectIndex = $$value));
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_1__["customization"], $$value => $$invalidate(5, $customization = $$value));
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_1__["customization"], $$value => $$invalidate(4, $customization = $$value));
 	;
 
 	const onSelectSlot = () => {
@@ -212176,8 +212192,8 @@ function instance($$self, $$props, $$invalidate) {
 	let customization_image_use = 1;
 	const func = value => $$invalidate(0, FirstNameLocal = value);
 	const func_1 = value => $$invalidate(1, LastNameLocal = value);
-	const click_handler = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateGender"])($selectIndex, true);
-	const click_handler_1 = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateGender"])($selectIndex, false);
+	const click_handler = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateGender"])(0, true);
+	const click_handler_1 = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateGender"])(0, false);
 	const func_2 = newparent => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateParents"])($gender, newparent, $customization.fatherId);
 	const click_handler_2 = () => $$invalidate(2, activeItem = 0);
 	const func_3 = newparent => Object(store_customization__WEBPACK_IMPORTED_MODULE_1__["updateParents"])($gender, $customization.motherId, newparent);
@@ -212209,7 +212225,6 @@ function instance($$self, $$props, $$invalidate) {
 		LastNameLocal,
 		activeItem,
 		$gender,
-		$selectIndex,
 		$customization,
 		handleKeyUp,
 		func,
@@ -212704,17 +212719,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lang */ "./lang/index.js");
 /* harmony import */ var api_rage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! api/rage */ "./src/api/rage.js");
 /* harmony import */ var store_customization__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! store/customization */ "./src/store/customization.js");
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../store.js */ "./src/views/player/newauthentication/chars/store.js");
-/* harmony import */ var _elements_appearance_index_svelte__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./elements/appearance/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/appearance/index.svelte");
-/* harmony import */ var _elements_characteristics_index_svelte__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./elements/characteristics/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/characteristics/index.svelte");
-/* harmony import */ var _elements_info_index_svelte__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./elements/info/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/info/index.svelte");
-/* harmony import */ var _elements_clothes_index_svelte__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./elements/clothes/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/clothes/index.svelte");
-/* harmony import */ var store_random_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! store/random/index.js */ "./src/store/random/index.js");
-/* harmony import */ var api_validation__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! api/validation */ "./src/api/validation.js");
-/* harmony import */ var _confirm_index_svelte__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../confirm/index.svelte */ "./src/views/player/newauthentication/confirm/index.svelte");
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main.css */ "./src/views/player/newauthentication/chars/create/main.css");
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
+/* harmony import */ var _elements_appearance_index_svelte__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./elements/appearance/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/appearance/index.svelte");
+/* harmony import */ var _elements_characteristics_index_svelte__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./elements/characteristics/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/characteristics/index.svelte");
+/* harmony import */ var _elements_info_index_svelte__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./elements/info/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/info/index.svelte");
+/* harmony import */ var _elements_clothes_index_svelte__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./elements/clothes/index.svelte */ "./src/views/player/newauthentication/chars/create/elements/clothes/index.svelte");
+/* harmony import */ var store_random_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! store/random/index.js */ "./src/store/random/index.js");
+/* harmony import */ var api_validation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! api/validation */ "./src/api/validation.js");
+/* harmony import */ var _confirm_index_svelte__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../confirm/index.svelte */ "./src/views/player/newauthentication/confirm/index.svelte");
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main.css */ "./src/views/player/newauthentication/chars/create/main.css");
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
 /* src\views\player\newauthentication\chars\create\index.svelte generated by Svelte v3.59.2 */
 
 
@@ -212732,11 +212746,10 @@ const { window: window_1 } = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["globa
 
 
 
-
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[24] = list[i];
-	child_ctx[26] = i;
+	child_ctx[23] = list[i];
+	child_ctx[25] = i;
 	return child_ctx;
 }
 
@@ -212745,7 +212758,7 @@ function create_if_block_1(ctx) {
 	let popupconfirm;
 	let current;
 
-	popupconfirm = new _confirm_index_svelte__WEBPACK_IMPORTED_MODULE_11__["default"]({
+	popupconfirm = new _confirm_index_svelte__WEBPACK_IMPORTED_MODULE_10__["default"]({
 			props: {
 				onClickRandom: /*onClickRandom*/ ctx[7],
 				onPopupToogle: /*onPopupToogle*/ ctx[8]
@@ -212785,16 +212798,16 @@ function create_each_block(ctx) {
 	let dispose;
 
 	function click_handler() {
-		return /*click_handler*/ ctx[14](/*index*/ ctx[26]);
+		return /*click_handler*/ ctx[14](/*index*/ ctx[25]);
 	}
 
 	return {
 		c() {
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", span_class_value = /*item*/ ctx[24].icon + 1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", span_class_value = /*item*/ ctx[23].icon + 1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "auth__customization_categorie");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*elemetsId*/ ctx[0] == /*index*/ ctx[26]);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*elemetsId*/ ctx[0] == /*index*/ ctx[25]);
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
@@ -212813,7 +212826,7 @@ function create_each_block(ctx) {
 			ctx = new_ctx;
 
 			if (dirty & /*elemetsId*/ 1) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*elemetsId*/ ctx[0] == /*index*/ ctx[26]);
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*elemetsId*/ ctx[0] == /*index*/ ctx[25]);
 			}
 		},
 		d(detaching) {
@@ -213076,6 +213089,8 @@ function create_fragment(ctx) {
 	};
 }
 
+const createSlotId = 0;
+
 const keypress_handler = () => {
 	
 };
@@ -213092,35 +213107,33 @@ function instance($$self, $$props, $$invalidate) {
 	let $gender;
 	let $LastName;
 	let $FirstName;
-	let $selectIndex;
 	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_3__["gender"], $$value => $$invalidate(19, $gender = $$value));
 	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_3__["LastName"], $$value => $$invalidate(20, $LastName = $$value));
 	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, store_customization__WEBPACK_IMPORTED_MODULE_3__["FirstName"], $$value => $$invalidate(21, $FirstName = $$value));
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, _store_js__WEBPACK_IMPORTED_MODULE_4__["selectIndex"], $$value => $$invalidate(22, $selectIndex = $$value));
 	let { isSendCreator = false } = $$props;
 	let elemetsId = 0;
 
 	const elemetsSettings = [
 		{
-			elemets: _elements_info_index_svelte__WEBPACK_IMPORTED_MODULE_7__["default"],
+			elemets: _elements_info_index_svelte__WEBPACK_IMPORTED_MODULE_6__["default"],
 			"title": Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Наследственность'),
 			"icon": "auth-hzcheeto",
 			desc: Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Выберите родителей своего персонажа, схожесть с одним из них и желаемый тон кожи.')
 		},
 		{
-			elemets: _elements_characteristics_index_svelte__WEBPACK_IMPORTED_MODULE_6__["default"],
+			elemets: _elements_characteristics_index_svelte__WEBPACK_IMPORTED_MODULE_5__["default"],
 			"title": Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Лицо'),
 			"icon": "auth-smile",
 			desc: Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Настройте лицо своему персонажу максимально подробно: от лба и до формы подбородка!')
 		},
 		{
-			elemets: _elements_appearance_index_svelte__WEBPACK_IMPORTED_MODULE_5__["default"],
+			elemets: _elements_appearance_index_svelte__WEBPACK_IMPORTED_MODULE_4__["default"],
 			"title": Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Особенности'),
 			"icon": "auth-brush",
 			desc: Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Украсьте своего персонажа уникальными особенностями, подобрав цвет глаз, наличие веснушек, брови и не только!')
 		},
 		{
-			elemets: _elements_clothes_index_svelte__WEBPACK_IMPORTED_MODULE_8__["default"],
+			elemets: _elements_clothes_index_svelte__WEBPACK_IMPORTED_MODULE_7__["default"],
 			"title": Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Комплекты одежды'),
 			"icon": "auth-shirt",
 			desc: Object(lang__WEBPACK_IMPORTED_MODULE_1__["translateText"])('player2', 'Тут вы можете выбрать Пол,Цвет кожи своему персонажу')
@@ -213143,14 +213156,14 @@ function instance($$self, $$props, $$invalidate) {
 
 		if (!isSendCreator) {
 			let check;
-			check = Object(api_validation__WEBPACK_IMPORTED_MODULE_10__["validate"])("name", $FirstName);
+			check = Object(api_validation__WEBPACK_IMPORTED_MODULE_9__["validate"])("name", $FirstName);
 
 			if (!check.valid) {
 				window.notificationAdd(4, 9, check.text, 3000);
 				return;
 			}
 
-			check = Object(api_validation__WEBPACK_IMPORTED_MODULE_10__["validate"])("surname", $LastName);
+			check = Object(api_validation__WEBPACK_IMPORTED_MODULE_9__["validate"])("surname", $LastName);
 
 			if (!check.valid) {
 				window.notificationAdd(4, 9, check.text, 3000);
@@ -213159,7 +213172,7 @@ function instance($$self, $$props, $$invalidate) {
 		}
 
 		isCreate = true;
-		Object(api_rage__WEBPACK_IMPORTED_MODULE_2__["executeClient"])('client.characters.customization.create', $selectIndex, $FirstName, $LastName, $gender);
+		Object(api_rage__WEBPACK_IMPORTED_MODULE_2__["executeClient"])('client.characters.customization.create', createSlotId, $FirstName, $LastName, $gender);
 	};
 
 	const onKeyUp = event => {
@@ -213177,14 +213190,14 @@ function instance($$self, $$props, $$invalidate) {
 
 	window.events.addEvent("cef.customization.error", onError);
 
-	Object(svelte__WEBPACK_IMPORTED_MODULE_13__["onDestroy"])(() => {
+	Object(svelte__WEBPACK_IMPORTED_MODULE_12__["onDestroy"])(() => {
 		window.events.removeEvent("cef.customization.error", onError);
 	});
 
 	let isPopupConfirmed = false;
 
 	const onClickRandom = () => {
-		Object(store_random_index_js__WEBPACK_IMPORTED_MODULE_9__["default"])($gender);
+		Object(store_random_index_js__WEBPACK_IMPORTED_MODULE_8__["default"])($gender);
 		onPopupToogle();
 	};
 
@@ -213629,190 +213642,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
 /* harmony import */ var _createdByChar_svelte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createdByChar.svelte */ "./src/views/player/newauthentication/chars/list/createdByChar.svelte");
 /* harmony import */ var _toCreateChar_svelte__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toCreateChar.svelte */ "./src/views/player/newauthentication/chars/list/toCreateChar.svelte");
-/* harmony import */ var _unlockSlot_svelte__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unlockSlot.svelte */ "./src/views/player/newauthentication/chars/list/unlockSlot.svelte");
 /* src\views\player\newauthentication\chars\list\characterMain.svelte generated by Svelte v3.59.2 */
 
 
 
 
 
-
-function create_if_block_3(ctx) {
-	let createdbychar;
-	let current;
-
-	createdbychar = new _createdByChar_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({
-			props: {
-				charid: /*charid*/ ctx[0],
-				char: /*char*/ ctx[1]
-			}
-		});
-
-	return {
-		c() {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["create_component"])(createdbychar.$$.fragment);
-		},
-		m(target, anchor) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["mount_component"])(createdbychar, target, anchor);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const createdbychar_changes = {};
-			if (dirty & /*charid*/ 1) createdbychar_changes.charid = /*charid*/ ctx[0];
-			if (dirty & /*char*/ 2) createdbychar_changes.char = /*char*/ ctx[1];
-			createdbychar.$set(createdbychar_changes);
-		},
-		i(local) {
-			if (current) return;
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(createdbychar.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(createdbychar.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_component"])(createdbychar, detaching);
-		}
-	};
-}
-
-// (12:22) 
-function create_if_block_1(ctx) {
-	let if_block_anchor;
-	let current;
-	let if_block = /*charid*/ ctx[0] == 2 && create_if_block_2(ctx);
-
-	return {
-		c() {
-			if (if_block) if_block.c();
-			if_block_anchor = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["empty"])();
-		},
-		m(target, anchor) {
-			if (if_block) if_block.m(target, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, if_block_anchor, anchor);
-			current = true;
-		},
-		p(ctx, dirty) {
-			if (/*charid*/ ctx[0] == 2) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
-
-					if (dirty & /*charid*/ 1) {
-						Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block, 1);
-					}
-				} else {
-					if_block = create_if_block_2(ctx);
-					if_block.c();
-					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block, 1);
-					if_block.m(if_block_anchor.parentNode, if_block_anchor);
-				}
-			} else if (if_block) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["group_outros"])();
-
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(if_block, 1, 1, () => {
-					if_block = null;
-				});
-
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["check_outros"])();
-			}
-		},
-		i(local) {
-			if (current) return;
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block);
-			current = true;
-		},
-		o(local) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(if_block);
-			current = false;
-		},
-		d(detaching) {
-			if (if_block) if_block.d(detaching);
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(if_block_anchor);
-		}
-	};
-}
-
-// (10:0) {#if char === -1 && charid <= 2}
 function create_if_block(ctx) {
-	let tocreatechar;
-	let current;
-	tocreatechar = new _toCreateChar_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({ props: { charid: /*charid*/ ctx[0] } });
-
-	return {
-		c() {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["create_component"])(tocreatechar.$$.fragment);
-		},
-		m(target, anchor) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["mount_component"])(tocreatechar, target, anchor);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const tocreatechar_changes = {};
-			if (dirty & /*charid*/ 1) tocreatechar_changes.charid = /*charid*/ ctx[0];
-			tocreatechar.$set(tocreatechar_changes);
-		},
-		i(local) {
-			if (current) return;
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(tocreatechar.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(tocreatechar.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_component"])(tocreatechar, detaching);
-		}
-	};
-}
-
-// (13:4) {#if charid == 2}
-function create_if_block_2(ctx) {
-	let unlockslot;
-	let current;
-	unlockslot = new _unlockSlot_svelte__WEBPACK_IMPORTED_MODULE_3__["default"]({ props: { charid: /*charid*/ ctx[0] } });
-
-	return {
-		c() {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["create_component"])(unlockslot.$$.fragment);
-		},
-		m(target, anchor) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["mount_component"])(unlockslot, target, anchor);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const unlockslot_changes = {};
-			if (dirty & /*charid*/ 1) unlockslot_changes.charid = /*charid*/ ctx[0];
-			unlockslot.$set(unlockslot_changes);
-		},
-		i(local) {
-			if (current) return;
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(unlockslot.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(unlockslot.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_component"])(unlockslot, detaching);
-		}
-	};
-}
-
-function create_fragment(ctx) {
 	let current_block_type_index;
 	let if_block;
 	let if_block_anchor;
 	let current;
-	const if_block_creators = [create_if_block, create_if_block_1, create_if_block_3];
+	const if_block_creators = [create_if_block_1, create_if_block_2];
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*char*/ ctx[1] === -1 && /*charid*/ ctx[0] <= 2) return 0;
-		if (/*char*/ ctx[1] === -2) return 1;
-		if (/*char*/ ctx[1] !== 0 && /*char*/ ctx[1] && /*char*/ ctx[1].Data) return 2;
+		if (/*char*/ ctx[1] === -1) return 0;
+		if (/*char*/ ctx[1] !== 0 && /*char*/ ctx[1] && /*char*/ ctx[1].Data) return 1;
 		return -1;
 	}
 
@@ -213833,7 +213679,7 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, if_block_anchor, anchor);
 			current = true;
 		},
-		p(ctx, [dirty]) {
+		p(ctx, dirty) {
 			let previous_block_index = current_block_type_index;
 			current_block_type_index = select_block_type(ctx, dirty);
 
@@ -213883,6 +213729,136 @@ function create_fragment(ctx) {
 				if_blocks[current_block_type_index].d(detaching);
 			}
 
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(if_block_anchor);
+		}
+	};
+}
+
+// (12:46) 
+function create_if_block_2(ctx) {
+	let createdbychar;
+	let current;
+
+	createdbychar = new _createdByChar_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({
+			props: {
+				charid: /*charid*/ ctx[0],
+				char: /*char*/ ctx[1]
+			}
+		});
+
+	return {
+		c() {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["create_component"])(createdbychar.$$.fragment);
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["mount_component"])(createdbychar, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const createdbychar_changes = {};
+			if (dirty & /*charid*/ 1) createdbychar_changes.charid = /*charid*/ ctx[0];
+			if (dirty & /*char*/ 2) createdbychar_changes.char = /*char*/ ctx[1];
+			createdbychar.$set(createdbychar_changes);
+		},
+		i(local) {
+			if (current) return;
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(createdbychar.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(createdbychar.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_component"])(createdbychar, detaching);
+		}
+	};
+}
+
+// (10:4) {#if char === -1}
+function create_if_block_1(ctx) {
+	let tocreatechar;
+	let current;
+	tocreatechar = new _toCreateChar_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({ props: { charid: /*charid*/ ctx[0] } });
+
+	return {
+		c() {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["create_component"])(tocreatechar.$$.fragment);
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["mount_component"])(tocreatechar, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const tocreatechar_changes = {};
+			if (dirty & /*charid*/ 1) tocreatechar_changes.charid = /*charid*/ ctx[0];
+			tocreatechar.$set(tocreatechar_changes);
+		},
+		i(local) {
+			if (current) return;
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(tocreatechar.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(tocreatechar.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_component"])(tocreatechar, detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let if_block_anchor;
+	let current;
+	let if_block = /*charid*/ ctx[0] === 0 && create_if_block(ctx);
+
+	return {
+		c() {
+			if (if_block) if_block.c();
+			if_block_anchor = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["empty"])();
+		},
+		m(target, anchor) {
+			if (if_block) if_block.m(target, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, if_block_anchor, anchor);
+			current = true;
+		},
+		p(ctx, [dirty]) {
+			if (/*charid*/ ctx[0] === 0) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+
+					if (dirty & /*charid*/ 1) {
+						Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block, 1);
+					}
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block, 1);
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			} else if (if_block) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["group_outros"])();
+
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(if_block, 1, 1, () => {
+					if_block = null;
+				});
+
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["check_outros"])();
+			}
+		},
+		i(local) {
+			if (current) return;
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_in"])(if_block);
+			current = true;
+		},
+		o(local) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["transition_out"])(if_block);
+			current = false;
+		},
+		d(detaching) {
+			if (if_block) if_block.d(detaching);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(if_block_anchor);
 		}
 	};
@@ -214163,7 +214139,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (80:8) {#each $accountData.charsSlot as char, index}
+// (80:8) {#each $accountData.charsSlot.slice(0, 1) as char, index}
 function create_each_block(ctx) {
 	let charactermain;
 	let current;
@@ -214216,7 +214192,7 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	let each_value = /*$accountData*/ ctx[0].charsSlot;
+	let each_value = /*$accountData*/ ctx[0].charsSlot.slice(0, 1);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -214283,7 +214259,7 @@ function create_fragment(ctx) {
 			if (!current || dirty & /*$accountLogin*/ 2) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t2, /*$accountLogin*/ ctx[1]);
 
 			if (dirty & /*getCharData, $accountData*/ 9) {
-				each_value = /*$accountData*/ ctx[0].charsSlot;
+				each_value = /*$accountData*/ ctx[0].charsSlot.slice(0, 1);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -214626,13 +214602,16 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const onSelectChar = () => {
-		Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateIndex"])(charid);
-		_store_js__WEBPACK_IMPORTED_MODULE_3__["selectIndex"].set(charid);
+		// One-character mode: only slot 0 is valid for creation.
+		if (charid !== 0) return;
+
+		Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateIndex"])(0);
+		_store_js__WEBPACK_IMPORTED_MODULE_3__["selectIndex"].set(0);
 		_store_js__WEBPACK_IMPORTED_MODULE_3__["selectType"].set(_store_js__WEBPACK_IMPORTED_MODULE_3__["settings"].create);
 	};
 
-	const click_handler = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateGender"])(charid, true);
-	const click_handler_1 = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateGender"])(charid, false);
+	const click_handler = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateGender"])(0, true);
+	const click_handler_1 = () => Object(store_customization__WEBPACK_IMPORTED_MODULE_4__["updateGender"])(0, false);
 	const func = value => $$invalidate(1, FirstNameLocal = value);
 	const func_1 = value => $$invalidate(2, LastNameLocal = value);
 
@@ -214679,90 +214658,6 @@ class ToCreateChar extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteC
 if (false) {}
 
 /* harmony default export */ __webpack_exports__["default"] = (ToCreateChar);
-
-
-/***/ }),
-
-/***/ "./src/views/player/newauthentication/chars/list/unlockSlot.svelte":
-/*!*************************************************************************!*\
-  !*** ./src/views/player/newauthentication/chars/list/unlockSlot.svelte ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
-/* harmony import */ var lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lang */ "./lang/index.js");
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../store.js */ "./src/views/player/newauthentication/chars/store.js");
-/* src\views\player\newauthentication\chars\list\unlockSlot.svelte generated by Svelte v3.59.2 */
-
-
-
-
-
-function create_fragment(ctx) {
-	let div;
-	let mounted;
-	let dispose;
-
-	return {
-		c() {
-			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "auth__characters_block");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*$selectIndex*/ ctx[1] === /*charid*/ ctx[0]);
-		},
-		m(target, anchor) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
-
-			if (!mounted) {
-				dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(div, "click", /*onSelectSlot*/ ctx[2]);
-				mounted = true;
-			}
-		},
-		p(ctx, [dirty]) {
-			if (dirty & /*$selectIndex, charid*/ 3) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["toggle_class"])(div, "active", /*$selectIndex*/ ctx[1] === /*charid*/ ctx[0]);
-			}
-		},
-		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
-		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
-		d(detaching) {
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div);
-			mounted = false;
-			dispose();
-		}
-	};
-}
-
-function instance($$self, $$props, $$invalidate) {
-	let $selectIndex;
-	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["component_subscribe"])($$self, _store_js__WEBPACK_IMPORTED_MODULE_2__["selectIndex"], $$value => $$invalidate(1, $selectIndex = $$value));
-	let { charid } = $$props;
-
-	const onSelectSlot = () => {
-		_store_js__WEBPACK_IMPORTED_MODULE_2__["selectIndex"].set(charid);
-		_store_js__WEBPACK_IMPORTED_MODULE_2__["selectType"].set(_store_js__WEBPACK_IMPORTED_MODULE_2__["settings"].buy);
-	};
-
-	$$self.$$set = $$props => {
-		if ('charid' in $$props) $$invalidate(0, charid = $$props.charid);
-	};
-
-	return [charid, $selectIndex, onSelectSlot];
-}
-
-class UnlockSlot extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteComponent"] {
-	constructor(options) {
-		super();
-		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { charid: 0 });
-	}
-}
-
-
-if (false) {}
-
-/* harmony default export */ __webpack_exports__["default"] = (UnlockSlot);
 
 
 /***/ }),
@@ -214869,13 +214764,13 @@ function create_if_block(ctx) {
 			div4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			label0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
-			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("White\r\n                    ");
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("White\n                    ");
 			input0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			label1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Red\r\n                    ");
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Red\n                    ");
 			input1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
@@ -217965,7 +217860,7 @@ function create_each_block(ctx) {
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
-			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                        $");
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                        $");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" / PC.");
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -218086,7 +217981,7 @@ function create_if_block(ctx) {
 			input = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Sell for\r\n                    ");
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Sell for\n                    ");
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
 			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t10_value);
@@ -218762,7 +218657,7 @@ function create_each_block_1(ctx) {
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
-			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                    $");
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                    $");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" / time");
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -218873,7 +218768,7 @@ function create_if_block(ctx) {
 
 			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("To pay\r\n                ");
+			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("To pay\n                ");
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
 			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t11_value);
