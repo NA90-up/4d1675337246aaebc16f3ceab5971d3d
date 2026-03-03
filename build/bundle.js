@@ -80438,12 +80438,12 @@ function create_each_block(ctx) {
 	};
 }
 
-// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
+// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
 function create_catch_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
 
-// (763:52)                  <div class="war__maps_image" on:mousedown={handleGlobalMouseDown}
+// (763:52)                   <div class="war__maps_image" on:mousedown={handleGlobalMouseDown}
 function create_then_block(ctx) {
 	let div;
 	let mounted;
@@ -80472,7 +80472,7 @@ function create_then_block(ctx) {
 	};
 }
 
-// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
+// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
 function create_pending_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
@@ -81278,7 +81278,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "airport1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81345,7 +81345,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #fff;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #fff;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "airport2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81412,7 +81412,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "arena");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81479,7 +81479,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "autorynok");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81546,7 +81546,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "_bikerent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "data-name", "bikerent");
@@ -81614,7 +81614,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "boatrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81681,7 +81681,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "buspark");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81748,7 +81748,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "casino");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81815,7 +81815,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "dalnoboi");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81882,7 +81882,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "darkshop");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -81949,7 +81949,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "drugs");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82016,7 +82016,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "drugs2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82083,7 +82083,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "electric");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82150,7 +82150,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82217,7 +82217,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82284,7 +82284,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82351,7 +82351,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82418,7 +82418,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82485,7 +82485,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.04;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.04;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82552,7 +82552,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm7");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82619,7 +82619,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "farm8");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82686,7 +82686,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82753,7 +82753,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82820,7 +82820,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82887,7 +82887,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -82954,7 +82954,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "forest5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83021,7 +83021,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "gosshahta");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83088,7 +83088,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "himlab");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83155,7 +83155,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "huntingshop");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83222,7 +83222,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "inkas");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83289,7 +83289,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "jobgason");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83356,7 +83356,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "landbar");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83423,7 +83423,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "mech");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83490,7 +83490,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "observatorya");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83557,7 +83557,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "offroadrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83624,7 +83624,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83691,7 +83691,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83758,7 +83758,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83825,7 +83825,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "oil4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83892,7 +83892,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "port");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -83959,7 +83959,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "rielt");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84026,7 +84026,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "rynok");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84093,7 +84093,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84160,7 +84160,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84227,7 +84227,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84294,7 +84294,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "shahta4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84361,7 +84361,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84428,7 +84428,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84495,7 +84495,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84562,7 +84562,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad4");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84629,7 +84629,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad5");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84696,7 +84696,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84763,7 +84763,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #d9d9d9;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #d9d9d9;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "sklad7");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84830,7 +84830,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "speedcarrent");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84897,7 +84897,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "taxi");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -84964,7 +84964,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "theatre");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85031,7 +85031,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "theatre2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85098,7 +85098,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85165,7 +85165,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85232,7 +85232,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #dadada;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #dadada;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vetryanaya3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85299,7 +85299,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #bfbfbf;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #bfbfbf;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "vokzal");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85366,7 +85366,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "zavod");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -85433,7 +85433,7 @@ function create_fragment(ctx) {
 			svg = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("svg");
 			defs = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("defs");
 			style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("style");
-			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\n        fill: #c1c1c1;\n        fill-opacity: 0.4;\n        stroke: #fff;\n        stroke-linecap: square;\n        stroke-linejoin: bevel;\n        stroke-width: 6px;\n        stroke-dasharray: 24 12;\n        fill-rule: evenodd;\n      }\n    ");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".cls-1 {\r\n        fill: #c1c1c1;\r\n        fill-opacity: 0.4;\r\n        stroke: #fff;\r\n        stroke-linecap: square;\r\n        stroke-linejoin: bevel;\r\n        stroke-width: 6px;\r\n        stroke-dasharray: 24 12;\r\n        fill-rule: evenodd;\r\n      }\r\n    ");
 			path = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["svg_element"])("path");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "id", "zavod2");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path, "class", "cls-1");
@@ -112283,7 +112283,7 @@ function create_fragment(ctx) {
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			strong0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong0.textContent = "Gambling";
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" is a game with the aim of winning money or other material valuables, in which the winnings are fully or significantly dependent on chance rather than the skill of the players.\n\n    ");
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" is a game with the aim of winning money or other material valuables, in which the winnings are fully or significantly dependent on chance rather than the skill of the players.\r\n\r\n    ");
 			strong1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong1.textContent = "Currently, the server features 6 gambling games:";
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" Dice, roulette, lottery, blackjack, horse racing, and slot machines.");
@@ -113121,7 +113121,7 @@ function create_fragment(ctx) {
 			br4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("br");
 			strong7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong7.textContent = "/closestock";
-			t23 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" - close the warehouse.\n    \n    ");
+			t23 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" - close the warehouse.\r\n    \r\n    ");
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			img0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
 			img1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
@@ -113442,7 +113442,7 @@ function create_fragment(ctx) {
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(", ");
 			strong3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("strong");
 			strong3.textContent = "arms and narcotics trade";
-			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".\n\n    ");
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(".\r\n\r\n    ");
 			p0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
 			p0.innerHTML = `<span style="font-weight: 400;">In total, you can find 5 gangs in the state: <strong>Blood Street Gang</strong>, <strong>The Families</strong>, <strong>The Ballas Gang</strong>, <strong>Los Santos Vagos</strong>, <strong>Marabunta Grande</strong>. Just like the mafia, some of them can form alliances, while others engage in fierce wars.</span>`;
 			t20 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -120956,7 +120956,7 @@ function create_if_block_8(ctx) {
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
 			img2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("img");
-			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                                             Sender: ");
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                                             Sender: ");
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t6_value);
 			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
@@ -128667,7 +128667,7 @@ function create_if_block(ctx) {
 			: '');
 
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div3, "class", "hud-speed-text");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path6, "d", "M473.803,82.95l-26.876-52.676c-5.625-11.022-19.118-15.401-30.143-9.776c-11.023,5.624-15.399,19.12-9.776,30.143\n                          l18.309,35.886c-29.304,9.73-50.507,37.381-50.507,69.91v54.951c0,9.281,7.524,16.806,16.806,16.806h39.82v56.296\n                          c0,24.99-20.33,45.32-45.319,45.32h-27.279V41.29C358.837,18.523,340.316,0,317.549,0H119.39\n                          C90.703,0,67.364,23.338,67.364,52.025v378.068c-18.113,4.368-31.613,20.699-31.613,40.134v24.967\n                          c0,9.281,7.524,16.805,16.805,16.805h321.091c9.281,0,16.806-7.524,16.806-16.805v-24.967c0-19.435-13.502-35.766-31.615-40.134\n                          v-55.471h27.279c49.699,0,90.134-40.434,90.134-90.135V93.133C476.25,89.592,475.411,86.102,473.803,82.95z M287.787,167.31\n                          H138.416c-7.735,0-14.005-6.27-14.005-14.005V71.661c0-7.735,6.27-14.005,14.005-14.005h149.371\n                          c7.735,0,14.005,6.27,14.005,14.005v81.645h0C301.792,161.04,295.522,167.31,287.787,167.31z");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(path6, "d", "M473.803,82.95l-26.876-52.676c-5.625-11.022-19.118-15.401-30.143-9.776c-11.023,5.624-15.399,19.12-9.776,30.143\r\n                          l18.309,35.886c-29.304,9.73-50.507,37.381-50.507,69.91v54.951c0,9.281,7.524,16.806,16.806,16.806h39.82v56.296\r\n                          c0,24.99-20.33,45.32-45.319,45.32h-27.279V41.29C358.837,18.523,340.316,0,317.549,0H119.39\r\n                          C90.703,0,67.364,23.338,67.364,52.025v378.068c-18.113,4.368-31.613,20.699-31.613,40.134v24.967\r\n                          c0,9.281,7.524,16.805,16.805,16.805h321.091c9.281,0,16.806-7.524,16.806-16.805v-24.967c0-19.435-13.502-35.766-31.615-40.134\r\n                          v-55.471h27.279c49.699,0,90.134-40.434,90.134-90.135V93.133C476.25,89.592,475.411,86.102,473.803,82.95z M287.787,167.31\r\n                          H138.416c-7.735,0-14.005-6.27-14.005-14.005V71.661c0-7.735,6.27-14.005,14.005-14.005h149.371\r\n                          c7.735,0,14.005,6.27,14.005,14.005v81.645h0C301.792,161.04,295.522,167.31,287.787,167.31z");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "fill", svg3_fill_value = /*getFuelColor*/ ctx[19](/*FuelProcent*/ ctx[4]));
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "version", "1.1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(svg3, "id", "Layer_1");
@@ -145474,12 +145474,12 @@ function create_if_block(ctx) {
 	};
 }
 
-// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
+// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
 function create_catch_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
 
-// (40:52)                  <div class="newphone__maps_image" style="background-image: url({mapImage}
+// (40:52)                   <div class="newphone__maps_image" style="background-image: url({mapImage}
 function create_then_block(ctx) {
 	let div;
 
@@ -145499,7 +145499,7 @@ function create_then_block(ctx) {
 	};
 }
 
-// (1:0)  <script>     import mapImage from './map.jpg'      import { loadImage, loadAwaitImage }
+// (1:0)   <script>      import mapImage from './map.jpg'        import { loadImage, loadAwaitImage }
 function create_pending_block(ctx) {
 	return { c: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], m: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"], d: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"] };
 }
@@ -148266,7 +148266,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (226:16) {#each emojiListValues.filter(el => filterCheck({                     name: el.name,                     sText: el.sText,                     shortname: el.shortname                 }, searchText)) as emoji}
+// (226:16) {#each emojiListValues.filter(el => filterCheck({                      name: el.name,                      sText: el.sText,                      shortname: el.shortname                  }, searchText)) as emoji}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 	let if_block = (typeof /*emoji*/ ctx[35].colorId === "undefined" || /*emoji*/ ctx[35].colorId === /*selectedColor*/ ctx[1]) && create_if_block_4(ctx);
@@ -214764,13 +214764,13 @@ function create_if_block(ctx) {
 			div4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			label0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
-			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("White\n                    ");
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("White\r\n                    ");
 			input0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			label1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Red\n                    ");
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Red\r\n                    ");
 			input1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			span1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
@@ -217860,7 +217860,7 @@ function create_each_block(ctx) {
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
-			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                        $");
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                        $");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" / PC.");
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -217981,7 +217981,7 @@ function create_if_block(ctx) {
 			input = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
 			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Sell for\n                    ");
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Sell for\r\n                    ");
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
 			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t10_value);
@@ -218657,7 +218657,7 @@ function create_each_block_1(ctx) {
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
-			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\n                    $");
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("\r\n                    $");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" / time");
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -218768,7 +218768,7 @@ function create_if_block(ctx) {
 
 			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("To pay\n                ");
+			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("To pay\r\n                ");
 			div5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
 			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t11_value);
